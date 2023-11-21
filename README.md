@@ -4,7 +4,7 @@
 [![Documentation](https://docs.rs/json-lines/badge.svg)](https://docs.rs/json-lines/)
 [![Crate License](https://img.shields.io/crates/l/json-lines.svg)](https://crates.io/crates/json-lines)
 [![Dependency status](https://deps.rs/repo/github/strawlab/json-lines/status.svg)](https://deps.rs/repo/github/strawlab/json-lines)
-[![build](https://github.com/strawlab/json-lines/workflows/build/badge.svg?branch=main)](https://github.com/strawlab/json-lines/actions?query=branch%3Amain)
+[![build](https://github.com/strawlab/json-lines/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/strawlab/json-lines/actions?query=branch%3Amain)
 
 json-lines is a `#![no_std]` + serde compatible message library implementing the
 JSON Lines format.
