@@ -38,7 +38,7 @@ where
             // already-searched buffer is maintained.
             loop {
                 // we loop until out of bytes or found actual JSON inside newline
-                if let Some(newline_offset) = memchr::memchr2(b'\n', b'\r', &buf[..]) {
+                if let Some(newline_offset) = memchr::memchr(b'\n', &buf[..]) {
                     // Found a line!
                     let to_parse = &buf[..newline_offset];
                     if newline_offset == 0 {
@@ -46,7 +46,7 @@ where
                         // try again
                         continue;
                     }
-                    debug_assert!(buf[newline_offset] == b'\n' || buf[newline_offset] == b'\r');
+                    debug_assert!(buf[newline_offset] == b'\n');
                     match serde_json::from_slice(&to_parse[..newline_offset]) {
                         Ok(msg) => {
                             buf.advance(newline_offset + 1);
@@ -79,7 +79,7 @@ where
     type Error = Error;
     fn encode(&mut self, msg: S, final_buf: &mut BytesMut) -> Result<()> {
         let mut v = serde_json::to_vec(&msg).map_err(|_| Error::SerializeJson)?;
-        if memchr::memchr2(b'\n', b'\r', &v).is_some() {
+        if memchr::memchr(b'\n', &v).is_some() {
             return Err(Error::NewlineInData);
         }
         v.push(b'\n');
