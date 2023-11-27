@@ -26,11 +26,11 @@ JSONL is "self-describing" but less efficient, whereas postcard is very compact
 but requires an out-of-band knowledge of message structure.
 
 The crate contains a `#![no_std]` implementation for use in, e.g. embedded
-contexts. The `std` feature is enabled by defaults and provides things such as
+contexts. The `std` feature is enabled by default and provides things such as
 the [Error] enum implements the [std::error::Error] Trait.
 
-The `codec` feature enables [crate::codec::JsonLinesCodec], which provides
-an implementation of [tokio_util::codec::Decoder] and
+The `codec` feature enables compilation of [crate::codec::JsonLinesCodec], which
+provides an implementation of [tokio_util::codec::Decoder] and
 [tokio_util::codec::Encoder].
 
 ## License
