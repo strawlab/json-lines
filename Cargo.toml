@@ -10,8 +10,8 @@ categories = ["embedded", "encoding", "no-std"]
 keywords = ["serde", "JSON", "framing"]
 
 [package.metadata.docs.rs]
-all-features = true
-rustdoc-args = ["--cfg", "doc_cfg"]
+features = ["use-std", "codec"]
+rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
 serde = { version = "1.0", default-features = false, features = ["derive"] }

@@ -1,7 +1,6 @@
 #![warn(missing_docs)]
 #![cfg_attr(not(doctest), doc = include_str!("../README.md"))]
-#![cfg_attr(doc_cfg, feature(doc_cfg))]
-
+#![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
 #![cfg_attr(not(feature = "use-std"), no_std)]
 
 // The code in this module is based on
@@ -12,7 +11,7 @@ use serde::{Deserialize, Serialize};
 pub mod accumulator;
 
 #[cfg(feature = "codec")]
-#[cfg_attr(doc_cfg, doc(cfg(feature = "codec")))]
+#[cfg_attr(docsrs, doc(cfg(feature = "codec")))]
 pub mod codec;
 
 #[cfg(not(feature = "use-std"))]
@@ -28,7 +27,7 @@ pub type Result<T> = std::result::Result<T, Error>;
 pub enum Error {
     /// An input-output error
     #[cfg(feature = "codec")]
-    #[cfg_attr(doc_cfg, doc(cfg(feature = "codec")))]
+    #[cfg_attr(docsrs, doc(cfg(feature = "codec")))]
     #[error("{0}")]
     Io(#[from] std::io::Error),
     /// A deserialization error
